@@ -1,4 +1,4 @@
-#use "../ch8/8_5.ml"
+#use "../ch08/8_5.ml"
 
 let global_ekimei_list = [
 {kanji="代々木上原"; kana="よよぎうえはら"; romaji="yoyogiuehara"; shozoku="千代田線"};

@@ -1,4 +1,4 @@
-#use "../ch8/8_7.ml"
+#use "../ch08/8_7.ml"
 
 let global_ekikan_list = [
 {kiten="代々木上原"; shuten="代々木公園"; keiyu="千代田線"; kyori=1.0; jikan=2};
