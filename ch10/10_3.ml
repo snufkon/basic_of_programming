@@ -19,7 +19,7 @@ let gakusei3 = {namae="tanaka"; tensuu=78; seiseki="B"} ;;
 (* 目的: tensuu フィールドの値で昇順に並んでいる gakusei_t 型のリスト lst と
    gakusei_t 型の値 gakusei を受け取り昇順を維持したまま gakusei を lst に
    追加したリストを返す *)
-(* insert: gakusei_t list -> int -> gakusei_t list *)
+(* insert: gakusei_t list -> gakusei_t -> gakusei_t list *)
 let rec insert lst gakusei = match gakusei with
     {namae = n1; tensuu = t1; seiseki = s1} ->
     match lst with
