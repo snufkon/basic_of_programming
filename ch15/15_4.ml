@@ -1,26 +1,5 @@
 #use "../metro/eki_t.ml" ;;
-
-(* 目的: eki_t 型 のリストを受け取り、
-
-   - 「最短距離最小の駅」
-   - 「最短距離最小の駅以外からなるリスト」
-
-   の組を返す *)
-(* saitan_wo_bunri: eki_t list -> eki_t * eki_t list *)
-let rec saitan_wo_bunri eki_list = match eki_list with
-    [] -> ({namae=""; saitan_kyori = infinity; temae_list = []}, [])
-  | {namae=a_namae; saitan_kyori=a_kyori; temae_list=a_team_list} as first :: rest ->
-     let (p, v) = saitan_wo_bunri rest in
-     match p with
-       {namae=b_namae; saitan_kyori=b_kyori; temae_list=b_team_list} ->
-       if b_namae = "" then
-         (first, v)
-       else if a_kyori < b_kyori then
-         (first, p :: v)
-       else
-         (p, first :: v)
-;;
-
+#use "../metro/saitan_wo_bunri.ml" ;;
 
 (* テストデータ *)
 let eki1 = {namae="池袋"; saitan_kyori = infinity; temae_list = []} ;;

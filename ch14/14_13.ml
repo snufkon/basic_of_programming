@@ -1,5 +1,7 @@
 #use "../metro/eki_t.ml" ;;
-#use "../metro/get_ekikan_kyori.ml";;
+#use "../metro/ekikan_t.ml" ;;
+#use "../metro/get_ekikan_kyori.ml" ;;
+#use "../metro/global_ekikan_list.ml" ;;
 
 
 (* 目的: 直前に確定した駅 p と未確定の駅のリスト v を受け取り

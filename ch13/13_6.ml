@@ -1,5 +1,8 @@
 #use "../metro/eki_t.ml" ;;
+#use "../metro/ekikan_t.ml" ;;
+#use "../metro/global_ekikan_list.ml" ;;
 #use "../metro/get_ekikan_kyori.ml";;
+
 
 (* 目的: 直前に確定した駅 p と未確定の駅 q を受け取り、
    p と q が直接つながっている場合に q の最短距離と手前リストの更新を行う *)
