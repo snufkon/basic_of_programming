@@ -10,47 +10,10 @@
 #use "../metro/insert_ekikan.ml" ;;
 #use "../metro/inserts_ekikan.ml" ;;
 #use "../metro/get_ekikan_kyori2.ml" ;;
+#use "../metro/koushin2.ml" ;;
 #use "../metro/saitan_wo_bunri.ml" ;;
+#use "../metro/dijkstra_main2.ml" ;;
 #use "../metro/make_initial_eki_list.ml" ;;
-
-
-(* 16.3 を ekian_tree_t を使い高速化 *)
-(* 目的: 直前に確定した駅 p と未確定の駅のリスト v、使用する駅間を持つ
-   ekikan_tree_t 型の木を受け取り更新処理を行った後に未確定の駅リストを返す *)
-(* koushin: eki_t -> eki_t list -> ekikan_tree_t -> eki_t list *)
-let koushin p v ekikan_tree = match p with
-    {namae=p_name; saitan_kyori=p_kyori; temae_list=p_team_list} -> 
-    List.map (fun q -> match q with
-                         {namae=q_name; saitan_kyori=q_kyori; temae_list=q_team_list}
-                         -> 
-                         let ekikan_kyori = get_ekikan_kyori p_name q_name ekikan_tree in
-                         if  ekikan_kyori = infinity then
-                           q
-                         else
-                           let saitan_kyori = (p_kyori +. ekikan_kyori) in
-                           if saitan_kyori < q_kyori then
-                             {namae=q_name; saitan_kyori=saitan_kyori; temae_list= q_name :: p_team_list}
-                           else
-                             q)
-      v
-;;
-
-
-(* 16.4 を ekian_tree_t を使い高速化 *)
-(* 目的: 未確定の駅のリスト eki_list, 使用する駅間を持つ ekikan_tree_t 型の木
-         を受け取りダイクストラのアルゴリズムによって各駅について
-         最短距離と最短経路が正しく入ったリストを返す
-*)
-(* dijkstra_main: eki_t list -> ekikan_tree_t -> eki_t list *)
-let rec dijkstra_main eki_list ekikan_tree =
-  if eki_list = [] then
-    []
-  else
-    let (saitan, others) = saitan_wo_bunri eki_list in
-    let eki_list2 = koushin saitan others ekikan_tree in
-    saitan :: dijkstra_main eki_list2 ekikan_tree
-;;
-
 
 (* 目的: 駅リストから指定された名前の駅のレコードを返す *)
 (* find_eki: eki_t list -> string -> eki_t *)
