@@ -1,4 +1,4 @@
 SOURCES = redBlack.mli redBlack.ml
 RESULT = my-redBlack
-OCAMLMAKEFILE = OcamlMakefile
+OCAMLMAKEFILE = ../OcamlMakefile
 include $(OCAMLMAKEFILE)

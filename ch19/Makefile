@@ -1,4 +1,4 @@
 SOURCES = tree.mli tree.ml
 RESULT = my-tree
-OCAMLMAKEFILE = OcamlMakefile
+OCAMLMAKEFILE = ../OcamlMakefile
 include $(OCAMLMAKEFILE)
